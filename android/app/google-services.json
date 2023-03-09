@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "241219274859",
+    "project_id": "yo-virtual-575de",
+    "storage_bucket": "yo-virtual-575de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241219274859:android:d4b5c52853c414a364092e",
+        "android_client_info": {
+          "package_name": "com.example.yo_virtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241219274859-jio2sm8064fe7arnvkeg4ce63qlq5a2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjeJrDNgSy7hwmIgZ5mIo_q-6TuODbbCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241219274859-jio2sm8064fe7arnvkeg4ce63qlq5a2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
