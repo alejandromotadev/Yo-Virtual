@@ -14,6 +14,7 @@ class _OnLoginState extends State<OnLogin> {
   bool isLogin = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController userController = TextEditingController();
 
   Future<void> signInWithEmailAndPassword() async {
     try {
@@ -44,7 +45,10 @@ class _OnLoginState extends State<OnLogin> {
   Widget _errorMessage() {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
-      child: Text(errorMessage == "" ? "" : '$errorMessage', style: const TextStyle(color: Colors.white),),
+      child: Text(
+        errorMessage == "" ? "" : '$errorMessage',
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 
@@ -61,11 +65,12 @@ class _OnLoginState extends State<OnLogin> {
 
   Widget _submitButton() {
     return ElevatedButton(
-      style: ButtonStyle(
-      ),
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
       onPressed:
           isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
-      child: Text(isLogin ? 'Login' : 'Register', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+      child: Text(isLogin ? 'Login' : 'Register',
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold)),
     );
   }
 
@@ -76,14 +81,56 @@ class _OnLoginState extends State<OnLogin> {
           isLogin = !isLogin;
         });
       },
-      child: Text(isLogin ? 'Register instead' : 'Login instead', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500)) ,
+      child: Text(isLogin ? 'Register instead' : 'Login instead',
+          style: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.w500)),
     );
   }
-  Widget _title(){
+
+  Widget _title() {
     return Column(
       children: const [
-         Text('Hello', style: TextStyle(color: Colors.white, fontSize: 48,fontWeight: FontWeight.bold)),
-         Text('Glad you are here', style: TextStyle(color: Colors.white, fontSize: 38,fontWeight: FontWeight.bold)),
+        Text('Hello',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 48,
+                fontWeight: FontWeight.bold)),
+        Text('Glad you are here',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 38,
+                fontWeight: FontWeight.bold)),
+      ],
+    );
+  }
+
+  Widget _loginSocial() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            Auth().signInWithGoogle();
+          },
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+          child: const Text('Sign in with Google',
+              style: TextStyle(color: Colors.black)),
+        )
+      ],
+    );
+  }
+
+  Widget _forgotPassword() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        MaterialButton(
+          onPressed: () {},
+          child: const Text(
+            'Forgot my password',
+            style: TextStyle(color: Colors.white60, fontSize: 11),
+          ),
+        ),
       ],
     );
   }
@@ -107,27 +154,21 @@ class _OnLoginState extends State<OnLogin> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       _title(),
+                      if (!isLogin) _entryField('user', userController),
                       _entryField('email', emailController),
                       _entryField('password', passwordController),
+                      _forgotPassword(),
                       _errorMessage(),
                       _submitButton(),
                       _loginOrRegisterButton(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          MaterialButton(
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                  context, '/recover_password');
-                            },
-                            child: const Text(
-                              'Olvide mi contrasena',
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 11),
-                            ),
-                          ),
-                        ],
+                      const Text(
+                        'Or continue with',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
                       ),
+                      _loginSocial(),
                     ],
                   ),
                 ),
