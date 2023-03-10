@@ -64,13 +64,21 @@ class _OnLoginState extends State<OnLogin> {
   }
 
   Widget _submitButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-      onPressed:
-          isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
-      child: Text(isLogin ? 'Login' : 'Register',
-          style: const TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold)),
+    return SizedBox(
+      width: 150,
+      height: 40,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20))),
+        onPressed: isLogin
+            ? signInWithEmailAndPassword
+            : createUserWithEmailAndPassword,
+        child: Text(isLogin ? 'Login' : 'Register',
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold)),
+      ),
     );
   }
 
@@ -83,40 +91,46 @@ class _OnLoginState extends State<OnLogin> {
       },
       child: Text(isLogin ? 'Register instead' : 'Login instead',
           style: const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w500)),
+              color: Colors.black, fontWeight: FontWeight.bold)),
     );
   }
 
   Widget _title() {
     return Column(
       children: const [
-        Text('Hello',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 48,
-                fontWeight: FontWeight.bold)),
-        Text('Glad you are here',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 38,
-                fontWeight: FontWeight.bold)),
+        Text(
+          'Hello',
+          style: TextStyle(
+              color: Colors.white, fontSize: 48, fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
 
   Widget _loginSocial() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ElevatedButton(
-          onPressed: () {
-            Auth().signInWithGoogle();
-          },
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-          child: const Text('Sign in with Google',
-              style: TextStyle(color: Colors.black)),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 50,
+            width: 150,
+            child: ElevatedButton(
+              onPressed: () {
+                Auth().signInWithGoogle();
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20))),
+              child: const Text('Sign in with Google',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white)),
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -128,7 +142,7 @@ class _OnLoginState extends State<OnLogin> {
           onPressed: () {},
           child: const Text(
             'Forgot my password',
-            style: TextStyle(color: Colors.white60, fontSize: 11),
+            style: TextStyle(color: Colors.black, fontSize: 11, fontWeight: FontWeight.bold),
           ),
         ),
       ],
@@ -138,7 +152,7 @@ class _OnLoginState extends State<OnLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purpleAccent,
+      backgroundColor: Colors.amber,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
