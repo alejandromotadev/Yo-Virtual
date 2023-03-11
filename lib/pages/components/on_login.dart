@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:yo_virtual/pages/components/on_create_link.dart';
+import 'package:yo_virtual/pages/create_link.dart';
 import 'package:yo_virtual/services/auth.dart';
 
 class OnLogin extends StatefulWidget {
